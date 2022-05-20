@@ -1,5 +1,11 @@
 # NoCauseForConcern
 
-Scripts can be found in Assets/Scripts
+A short horror game set during the 17th century.
 
-Note that project requires the following assets from the asset store to work:
+
+![screenshot](https://i.imgur.com/9uDcKuH.png)
+
+
+The game can be downloaded from [itch.io](https://rrbyn.itch.io/no-cause-for-concern-demo)
+
+Code can be found in Assets/Scripts
