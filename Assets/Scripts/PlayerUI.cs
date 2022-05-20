@@ -9,17 +9,18 @@ public class PlayerUI : MonoBehaviour
     private TextMeshProUGUI prompText;
     [SerializeField]
     private TextMeshProUGUI objectiveText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
     void Update(){
         if(GameEvents.branchesEvent){
             UpdateObjectiveText($"Branches collected {GameEvents.branchCounter}/6");
         }
-        if(GameEvents.branchesEventComplete){
+        if(GameEvents.branchesEventComplete || GameEvents.bucketEventComplete){
             UpdateObjectiveText("Return to the campsite");
+        }
+        if(GameEvents.wardsEvent){
+            UpdateObjectiveText($"Wards created {GameEvents.wardCounter}/3");
+        }
+        if(GameEvents.wardsEventComplete){
+            UpdateObjectiveText("Go to sleep");
         }
     }
 

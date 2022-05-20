@@ -5,10 +5,10 @@ using Cinemachine;
 public class EnableMovement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject cam;
-    void OnEnable() {
-        cam.SetActive(false);
+    private GameObject crosshair;
+    // Start is called before the first frame update
+       void OnEnable() {
+        crosshair.SetActive(true);
         GameEvents.canMove = true;
-        GameEvents.branchesEvent = true;
     }
 }

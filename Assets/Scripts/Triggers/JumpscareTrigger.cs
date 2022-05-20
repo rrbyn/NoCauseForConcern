@@ -10,8 +10,6 @@ public class JumpscareTrigger : MonoBehaviour
     [SerializeField]
     private GameObject blackScreen;
     [SerializeField]
-    private AudioClip jumpScareSound;
-    [SerializeField]
     private AudioSource audioSource;
     void OnTriggerEnter(Collider other) {
         StartCoroutine(birdJumpScare());
@@ -20,10 +18,10 @@ public class JumpscareTrigger : MonoBehaviour
         GameEvents.canMove = false;
         blackScreen.SetActive(true);
         deadBird.SetActive(true);
-        audioSource.PlayOneShot(jumpScareSound);
-        yield return new WaitForSeconds(1);
+        audioSource.Play();
+        yield return new WaitForSeconds(2);
         blackScreen.SetActive(false);
         GameEvents.canMove = true;
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

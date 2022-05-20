@@ -1,28 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class Tent : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public PlayableDirector timeline;
+    void Start(){
+        timeline = GetComponent<PlayableDirector>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(GameEvents.branchesEventComplete){
-            this.promptMessage = "go to sleep";
-        } else {
-            this.promptMessage = "";
+        if (GameEvents.wardsEventComplete)
+        {
+            promptMessage = "Go to sleep";
         }
     }
     protected override void Interact()
     {
-        if(GameEvents.branchesEventComplete){
-            GameEvents.goToSleep();
+        if (GameEvents.wardsEventComplete)
+        {
+            timeline.Play();
+            GameEvents.wardsEventComplete = false;
+            GameEvents.wardsPlaced = false;
+            StartCoroutine(fadeOutAndLoad());
         }
+    }
+
+    IEnumerator fadeOutAndLoad()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene("DemoEndScene");
     }
 }

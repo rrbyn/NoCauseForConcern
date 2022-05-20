@@ -13,6 +13,7 @@ public class CampsiteTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if(GameEvents.branchesEventComplete){
             timeline.Play();
+            GameEvents.branchesEventComplete = false;
             StartCoroutine(fadeOutAndLoad());
         }
     }
